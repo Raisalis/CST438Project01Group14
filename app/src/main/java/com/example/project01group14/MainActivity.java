@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         editTextLoginPassword = findViewById(R.id.editTextLoginPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
 
-        // When login button is pressed, check entered login information.
+        // TODO: When login button is pressed, check entered login information.
+        // TODO: If login is correct, send to Main Menu.
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
