@@ -21,6 +21,7 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
 
+
         // Attach layout
         textViewMainMenuWelcome = findViewById(R.id.textViewMainMenuWelcome);
         buttonToCalculatePage = findViewById(R.id.buttonToCalculatePage);

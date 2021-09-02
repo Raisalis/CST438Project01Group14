@@ -1,3 +1,4 @@
+
 # Created by https://www.toptal.com/developers/gitignore/api/androidstudio,windows,android,jetbrains+all,macos,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=androidstudio,windows,android,jetbrains+all,macos,java
 
@@ -364,3 +365,4 @@ obj/
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/androidstudio,windows,android,jetbrains+all,macos,java
+
