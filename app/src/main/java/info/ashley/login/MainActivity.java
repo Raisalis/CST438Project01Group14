@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    // Validate username and password
     private void validate(String userName, String userPassword) {
         if ((userName.equals("Admin")) && (userPassword.equals("CST438"))) {
             Intent intent = new Intent(MainActivity.this, AdminActivity.class);
