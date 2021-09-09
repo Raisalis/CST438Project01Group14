@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Variables
     private EditText Name;
     private EditText Password;
     private TextView Info;
@@ -35,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 validate(Name.getText().toString(), Password.getText().toString());
             }
         });
-
-
     }
     private void validate(String userName, String userPassword) {
         if ((userName.equals("Admin")) && (userPassword.equals("CST438"))) {
@@ -44,14 +43,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else {
             count--;
-
             Info.setText("Number of attempts remaining: " + String.valueOf(count));
-
-
             if(count == 0) {
                 Login.setEnabled(false);
             }
-
         }
     }
 }
