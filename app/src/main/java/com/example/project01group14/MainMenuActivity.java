@@ -16,6 +16,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private Button buttonToAdminPage;
     private Button buttonLogout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

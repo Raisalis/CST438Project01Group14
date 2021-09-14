@@ -41,9 +41,9 @@ public abstract class UsersDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            usersDao.insert(new UsersEntity("Username 1", "Firstname 1", "Lastname 1", "Password1"));
-            usersDao.insert(new UsersEntity("Username 2", "Firstname 2", "Lastname 2", "Password2"));
-            usersDao.insert(new UsersEntity("Username 3", "Firstname 3", "Lastname 3", "Password3"));
+            usersDao.insert(new UsersEntity("Username1", "Firstname1", "Lastname1", "Password1"));
+            usersDao.insert(new UsersEntity("Username2", "Firstname2", "Lastname2", "Password2"));
+            usersDao.insert(new UsersEntity("Username3", "Firstname3", "Lastname3", "Password3"));
             return null;
         }
     }
