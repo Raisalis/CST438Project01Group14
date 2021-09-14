@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AdminCreateUserActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     // Layout pieces
     private TextView mWelcome;
@@ -21,14 +21,14 @@ public class AdminCreateUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_createuser);
+        setContentView(R.layout.activity_register);
 
         // Rig layout
-        mWelcome = findViewById(R.id.textViewCreateUser);
-        mUsername = findViewById(R.id.editTextCreateUsername);
-        mPassword = findViewById(R.id.editTextCreatePassword);
-        mCreateUser = findViewById(R.id.buttonCreateUser);
-        mBack = findViewById(R.id.buttonToAdminFromCreate);
+        mWelcome = findViewById(R.id.textViewRegisterWelcome);
+        mUsername = findViewById(R.id.editTextRegisterUsername);
+        mPassword = findViewById(R.id.editTextRegisterPassword);
+        mCreateUser = findViewById(R.id.buttonRegisterUser);
+        mBack = findViewById(R.id.buttonToLoginFromRegister);
 
         //TODO: Create a new user given that the user does not exist.
         mCreateUser.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +38,7 @@ public class AdminCreateUserActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: Go back to Admin Main Menu
+        //TODO: Go back to Login Page
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
