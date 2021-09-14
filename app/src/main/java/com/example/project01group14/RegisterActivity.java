@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: Go back to Admin Main Menu
+        //TODO: Go back to Login Page
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
