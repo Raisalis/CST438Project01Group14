@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             UsersEntity usersEntity = usersDao.login(username, password);
-                            Log.d(TAG, "USERNAME HERE FAILED: " + usersDao.getAllUsers());
-
                             if (!validate(usersEntity)){
                                 runOnUiThread(new Runnable() {
                                     @Override
@@ -57,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 });
                             }else{
-                                Toast.makeText(getApplicationContext(), "You are Logged In", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getApplicationContext(), "You are Logged In", Toast.LENGTH_LONG).show();
                                 String name = usersEntity.getUser_name();
                                 Log.d(TAG, "USERNAME HERE FAILED: " + name);
                                 int userId = usersEntity.getId();

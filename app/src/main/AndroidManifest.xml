@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project01Group14">
         <activity
-            android:name=".RegisterActivity"
-            android:exported="true"/>
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,6 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CalculateActivity"></activity>
+        <activity android:name=".MainMenuActivity"></activity>
+        <activity android:name=".AdminCreateUserActivity"></activity>
+        <activity android:name=".AdminDeleteUserActivity"></activity>
+        <activity android:name=".AdminMenuActivity"></activity>
+<!--        <activity android:name=".AdminMessagesActivity"></activity>-->
+        <activity android:name=".AdminMinMaxActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+<!--        <activity android:name=".ResultsActivity"></activity>-->
     </application>
 
 </manifest>

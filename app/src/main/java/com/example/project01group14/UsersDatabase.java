@@ -10,6 +10,7 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {UsersEntity.class}, version = 1)
+
 public abstract class UsersDatabase extends RoomDatabase {
     private static String dbName = "users_database";
     private static UsersDatabase instance;
@@ -17,7 +18,7 @@ public abstract class UsersDatabase extends RoomDatabase {
     public static synchronized UsersDatabase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
-                    UsersDatabase.class, "users_database")
+                    UsersDatabase.class, "users_table")
                     .fallbackToDestructiveMigration()
                     .build();
         }
