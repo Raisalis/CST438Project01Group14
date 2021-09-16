@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextLoginUsername;
     private EditText editTextLoginPassword;
     private Button buttonLogin;
-    private Button buttonRegisterTo;
     private static final String TAG = "MainActivity";
+    private Button mCreateAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,10 @@ public class MainActivity extends AppCompatActivity {
         editTextLoginUsername = findViewById(R.id.editTextLoginUsername);
         editTextLoginPassword = findViewById(R.id.editTextLoginPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
-        buttonRegisterTo = findViewById(R.id.buttonRegisterTo);
+        mCreateAccount = findViewById(R.id.buttonToRegisterFromLogin);
+
+        // Intent Factory for buttons
+        IntentFactory factory = new IntentFactory();
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,10 +74,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonRegisterTo.setOnClickListener(new View.OnClickListener() {
+        //Moves user to make a new account
+        mCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                Intent intent = factory.getIntent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -82,10 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
     //Validate Username and Password
     public Boolean validate(UsersEntity usersEntity) {
-        //TODO: Get login information from the database instead of setting defaults.
-        //NOTE: Might need to change how this is validated based on how database is set-up.
-        String actualUser = "test";
-        String actualPass = "test";
         if(usersEntity == null) {
             return false;
         } else {

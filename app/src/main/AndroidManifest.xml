@@ -23,10 +23,10 @@
         <activity android:name=".AdminCreateUserActivity"></activity>
         <activity android:name=".AdminDeleteUserActivity"></activity>
         <activity android:name=".AdminMenuActivity"></activity>
-<!--        <activity android:name=".AdminMessagesActivity"></activity>-->
+        <activity android:name=".AdminMessagesActivity"></activity>
         <activity android:name=".AdminMinMaxActivity"></activity>
         <activity android:name=".RegisterActivity"></activity>
-<!--        <activity android:name=".ResultsActivity"></activity>-->
+        <activity android:name=".ResultsActivity"></activity>
     </application>
 
 </manifest>

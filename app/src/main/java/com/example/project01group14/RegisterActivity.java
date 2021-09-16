@@ -70,12 +70,13 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: Go back to Login Page
+        //Go back to Login Page
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-
+                IntentFactory factory = new IntentFactory();
+                Intent intent = factory.getIntent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

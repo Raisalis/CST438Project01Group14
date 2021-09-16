@@ -1,5 +1,6 @@
 package com.example.project01group14;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,43 +32,51 @@ public class AdminMenuActivity extends AppCompatActivity {
         mDefaultMsg = findViewById(R.id.buttonChangeDefaultMsgs);
         mBack = findViewById(R.id.buttonToMainFromAdmin);
 
-        // TODO: Move to Create User (Admin)
+        //Intent Factory for buttons
+        IntentFactory factory = new IntentFactory();
+
+        // Move to Create User (Admin)
         mCreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = factory.getIntent(AdminMenuActivity.this, AdminCreateUserActivity.class);
+                startActivity(intent);
             }
         });
 
-        // TODO: Move to Delete User (Admin)
+        // Move to Delete User (Admin)
         mDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = factory.getIntent(AdminMenuActivity.this, AdminDeleteUserActivity.class);
+                startActivity(intent);
             }
         });
 
-        // TODO: Move to Min/Max (Admin)
+        // Move to Min/Max (Admin)
         mMinMax.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = factory.getIntent(AdminMenuActivity.this, AdminMinMaxActivity.class);
+                startActivity(intent);
             }
         });
 
-        // TODO: Move to Default Messages (Admin)
+        // Move to Default Messages (Admin)
         mDefaultMsg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = factory.getIntent(AdminMenuActivity.this, AdminMessagesActivity.class);
+                startActivity(intent);
             }
         });
 
-        // TODO: Move back to Main Menu
+        // Move back to Main Menu
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = factory.getIntent(AdminMenuActivity.this, MainMenuActivity.class);
+                startActivity(intent);
             }
         });
 

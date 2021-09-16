@@ -1,5 +1,6 @@
 package com.example.project01group14;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,11 +29,13 @@ public class AdminDeleteUserActivity extends AppCompatActivity {
 
         // TODO: Set up recycler view to get users from database.
 
-        // TODO: Go back to Admin Main Menu.
+        // Go back to Admin Main Menu.
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                IntentFactory factory = new IntentFactory();
+                Intent intent = factory.getIntent(AdminDeleteUserActivity.this, AdminMenuActivity.class);
+                startActivity(intent);
             }
         });
 
