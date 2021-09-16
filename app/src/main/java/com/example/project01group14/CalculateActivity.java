@@ -59,7 +59,7 @@ public class CalculateActivity extends AppCompatActivity {
 
                 Request request = new Request.Builder()
                         .url(url)
-                        .addHeader("x-rapidapi-key", "a97bae83b7mshfca3d19522be242p14b650jsn1f245f91dca3")
+                        .addHeader("x-rapidapi-key", "")
                         .build();
                 Log.d(TAG, "request sent");
 
