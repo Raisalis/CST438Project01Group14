@@ -26,4 +26,7 @@ public interface UsersDao {
 
     @Query("SELECT * FROM users_table ORDER BY user_first_name DESC")
     LiveData<List<UsersEntity>> getAllUsers();
+
+    @Query("SELECT * FROM users_table where user_name=(:user_name) and user_password=(:user_password)")
+    UsersEntity login(String user_name, String user_password);
 }

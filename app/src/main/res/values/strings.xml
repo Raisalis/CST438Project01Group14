@@ -13,4 +13,6 @@
     <string name="back">Back</string>
     <string name="register_new_account">Register New Account</string>
     <string name="register">Register</string>
+    <string name="FirstName">FirstName</string>
+    <string name="LastName">LastName</string>
 </resources>
