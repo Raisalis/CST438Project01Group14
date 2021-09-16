@@ -1,5 +1,6 @@
 package com.example.project01group14;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,11 +39,13 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: Go back to Login Page
+        //Go back to Login Page
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                IntentFactory factory = new IntentFactory();
+                Intent intent = factory.getIntent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -1,5 +1,6 @@
 package com.example.project01group14;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,27 +29,33 @@ public class MainMenuActivity extends AppCompatActivity {
         buttonToAdminPage = findViewById(R.id.buttonToAdminPage);
         buttonLogout = findViewById(R.id.buttonLogout);
 
-        // TODO: Send user to Calculate page
+        // Intent Factory for Buttons
+        IntentFactory factory = new IntentFactory();
+
+        //Send user to Calculate page
         buttonToCalculatePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = factory.getIntent(MainMenuActivity.this, CalculateActivity.class);
+                startActivity(intent);
             }
         });
 
-        // TODO: Send user to admin page.
+        //Send user to admin page.
         buttonToAdminPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = factory.getIntent(MainMenuActivity.this, AdminMenuActivity.class);
+                startActivity(intent);
             }
         });
 
-        // TODO: When logout button is pressed, return to login page.
+        //When logout button is pressed, return to login page.
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = factory.getIntent(MainMenuActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

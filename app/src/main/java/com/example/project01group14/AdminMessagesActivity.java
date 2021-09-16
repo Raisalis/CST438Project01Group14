@@ -1,5 +1,6 @@
 package com.example.project01group14;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +40,7 @@ public class AdminMessagesActivity extends AppCompatActivity {
         m25Msg = findViewById(R.id.editText25_50Msg);
         m50Msg = findViewById(R.id.editText50_75Msg);
         m75Msg = findViewById(R.id.editText75_100Msg);
-        mChangeMsg = findViewById(R.id.buttonChangeDefaultMsgs);
+        mChangeMsg = findViewById(R.id.buttonChangeMsgs);
         mBack = findViewById(R.id.buttonToAdminFromMsg);
 
         //TODO: Prefill editText boxes with current messages from database.
@@ -52,11 +53,13 @@ public class AdminMessagesActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: Go back to Admin menu.
+        //Go back to Admin menu.
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                IntentFactory factory = new IntentFactory();
+                Intent intent = factory.getIntent(AdminMessagesActivity.this, AdminMenuActivity.class);
+                startActivity(intent);
             }
         });
     }
