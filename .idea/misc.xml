@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Emma/AndroidStudioProjects/CST438Project01Group14/app/src/main/res/layout/activity_admin_createuser.xml" value="0.39402173913043476" />
+        <entry key="..\:/Users/Emma/AndroidStudioProjects/CST438Project01Group14/app/src/main/res/layout/activity_admin_defaultmsgs.xml" value="0.39402173913043476" />
         <entry key="..\:/Users/Emma/AndroidStudioProjects/CST438Project01Group14/app/src/main/res/layout/activity_admin_deleteuser.xml" value="0.39402173913043476" />
         <entry key="..\:/Users/Emma/AndroidStudioProjects/CST438Project01Group14/app/src/main/res/layout/activity_admin_minmax.xml" value="0.39402173913043476" />
         <entry key="..\:/Users/Emma/AndroidStudioProjects/CST438Project01Group14/app/src/main/res/layout/activity_adminmenu.xml" value="0.4017210144927536" />
@@ -11,6 +12,7 @@
         <entry key="..\:/Users/Emma/AndroidStudioProjects/CST438Project01Group14/app/src/main/res/layout/activity_createuser.xml" value="0.39402173913043476" />
         <entry key="..\:/Users/Emma/AndroidStudioProjects/CST438Project01Group14/app/src/main/res/layout/activity_main.xml" value="0.490036231884058" />
         <entry key="..\:/Users/Emma/AndroidStudioProjects/CST438Project01Group14/app/src/main/res/layout/activity_mainmenu.xml" value="0.490036231884058" />
+        <entry key="..\:/Users/Emma/AndroidStudioProjects/CST438Project01Group14/app/src/main/res/layout/activity_results.xml" value="0.39402173913043476" />
       </map>
     </option>
   </component>
