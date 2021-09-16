@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextLoginUsername;
     private EditText editTextLoginPassword;
     private Button buttonLogin;
+    private Button mCreateAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         editTextLoginUsername = findViewById(R.id.editTextLoginUsername);
         editTextLoginPassword = findViewById(R.id.editTextLoginPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
+        mCreateAccount = findViewById(R.id.buttonToRegisterFromLogin);
+
+        // Intent Factory for buttons
+        IntentFactory factory = new IntentFactory();
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,13 +39,21 @@ public class MainActivity extends AppCompatActivity {
                 String username = editTextLoginUsername.getText().toString();
                 String password = editTextLoginPassword.getText().toString();
                 if (validate(username, password)) {
-                    //TODO: Change to Intent Factory.
-                    Intent intent = new Intent(MainActivity.this, MainMenuActivity.class);
+                    Intent intent = factory.getIntent(MainActivity.this, MainMenuActivity.class);
                     startActivity(intent);
                 } else {
                     Toast myToast = Toast.makeText(MainActivity.this, "Incorrect Username or Password. Please try again.", Toast.LENGTH_LONG);
                     myToast.show();
                 }
+            }
+        });
+
+        //Moves user to make a new account
+        mCreateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = factory.getIntent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -1,5 +1,6 @@
 package com.example.project01group14;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +32,7 @@ public class AdminMinMaxActivity extends AppCompatActivity {
         mMaxText = findViewById(R.id.textViewMax);
         mMin = findViewById(R.id.editTextMin);
         mMax = findViewById(R.id.editTextMax);
-        mChangeMinMax = findViewById(R.id.buttonChangeMinMax);
+        mChangeMinMax = findViewById(R.id.buttonChangeValues);
         mBack = findViewById(R.id.buttonToAdminFromMinMax);
 
         // TODO: Pre-fill min/max editTexts with current values.
@@ -44,11 +45,13 @@ public class AdminMinMaxActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: Go back to Admin Main Menu
+        //Go back to Admin Main Menu
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                IntentFactory factory = new IntentFactory();
+                Intent intent = factory.getIntent(AdminMinMaxActivity.this, AdminMenuActivity.class);
+                startActivity(intent);
             }
         });
     }

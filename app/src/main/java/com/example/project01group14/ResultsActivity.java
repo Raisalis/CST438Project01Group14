@@ -1,5 +1,6 @@
 package com.example.project01group14;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,19 +32,24 @@ public class ResultsActivity extends AppCompatActivity {
 
         //TODO: Change mResults text to api results.
 
-        //TODO: Try Again button returns user to calculate activity.
+        //Intent Factory for buttons
+        IntentFactory factory = new IntentFactory();
+
+        //Try Again button returns user to calculate activity.
         mTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = factory.getIntent(ResultsActivity.this, CalculateActivity.class);
+                startActivity(intent);
             }
         });
 
-        //TODO: Returns user to main menu.
+        //Returns user to main menu.
         mMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = factory.getIntent(ResultsActivity.this, MainMenuActivity.class);
+                startActivity(intent);
             }
         });
     }
