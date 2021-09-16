@@ -5,23 +5,29 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 public class CalculateActivity extends AppCompatActivity {
-    private TextView displayCalculation;
+    private TextView displayCalculation, displayResults;
     private String name1, name2;
     private TextView editTextPersonName1;
     private TextView editTextPersonName2;
@@ -35,46 +41,72 @@ public class CalculateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calculate);
 
         displayCalculation = (TextView) findViewById(R.id.displayCalculation);
+        displayResults = (TextView) findViewById(R.id.displayResults);
         button = findViewById(R.id.calculateButton);
         editTextPersonName1 = findViewById(R.id.editTextPersonName1);
         editTextPersonName2 = findViewById(R.id.editTextPersonName2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                name1 = (String) editTextPersonName1.getText();
-                name2 = (String) editTextPersonName2.getText();
+                name1 = (String) editTextPersonName1.getText().toString();
+                name2 = (String) editTextPersonName2.getText().toString();
+
                 OkHttpClient client = new OkHttpClient();
-                url = "https://love-calculator.p.rapidapi.com/getPercentage?fname={name1}&sname={name2}".format(name1, name2);
+
+                String url = String.format("https://love-calculator.p.rapidapi.com/getPercentage?fname=%s&sname=%s", name1, name2);
+
+                Log.d(TAG, "request about to send, url: " + url);
+
                 Request request = new Request.Builder()
                         .url(url)
-                        .get()
-                        .addHeader("x-rapidapi-host", "")
-                        .addHeader("x-rapidapi-key", "")
+                        .addHeader("x-rapidapi-key", "a97bae83b7mshfca3d19522be242p14b650jsn1f245f91dca3")
                         .build();
+                Log.d(TAG, "request sent");
+
 
                 client.newCall(request).enqueue(new Callback() {
                     @Override
-                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    public void onFailure(Call call, IOException e) {
                         e.printStackTrace();
+                        Log.d(TAG, "onFailure: Failed");
                     }
 
                     @Override
-                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                        if (response.isSuccessful()) {
-                            final String myResponse = response.body().string();
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Log.d(TAG, "checking success: ");
+                        //if(!response.isSuccessful()){
 
-                            CalculateActivity.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    displayCalculation.setText(myResponse);
-                                }
-                            });
+                            String myResponse = response.body().string();
+
+                            try {
+                                JSONObject obj = new JSONObject(myResponse);
+                                Log.d(TAG, "Json: " + obj);
+                                String percent = (String) obj.get("percentage");
+                                String result = (String) obj.get("result");
+                                Log.d(TAG, "percent: " + percent);
+                                CalculateActivity.this.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        displayCalculation.setText("Love Percentage: "
+                                                        + percent + "%");
+                                        displayResults.setText(result);
+
+                                    }
+                                });
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                CalculateActivity.this.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        displayCalculation.setText("Something Went Wrong Try Again");
+                                    }
+                                });
+                            }
 
                         }
-                    }
+                    //}
                 });
             }
         });
     }
 }
-
