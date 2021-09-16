@@ -1,9 +1,10 @@
 package com.example.project01group14;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextLoginUsername;
     private EditText editTextLoginPassword;
     private Button buttonLogin;
+    private static final String TAG = "MainActivity";
     private Button mCreateAccount;
 
     @Override
@@ -38,12 +40,36 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String username = editTextLoginUsername.getText().toString();
                 String password = editTextLoginPassword.getText().toString();
-                if (validate(username, password)) {
-                    Intent intent = factory.getIntent(MainActivity.this, MainMenuActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast myToast = Toast.makeText(MainActivity.this, "Incorrect Username or Password. Please try again.", Toast.LENGTH_LONG);
-                    myToast.show();
+
+                if(username.isEmpty() || password.isEmpty()){
+                    Toast.makeText(MainActivity.this, "All fields required", Toast.LENGTH_SHORT).show();
+                }else{
+                    UsersDatabase usersDatabase = UsersDatabase.getInstance(getApplicationContext());
+                    UsersDao usersDao = usersDatabase.usersDao();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            UsersEntity usersEntity = usersDao.login(username, password);
+                            if (!validate(usersEntity)){
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }else{
+                                //Toast.makeText(getApplicationContext(), "You are Logged In", Toast.LENGTH_LONG).show();
+                                String name = usersEntity.getUser_name();
+                                Log.d(TAG, "USERNAME HERE FAILED: " + name);
+                                int userId = usersEntity.getId();
+                                Intent intent = new Intent(MainActivity.this, MainMenuActivity.class);
+                                intent.putExtra("name", name);
+                                intent.putExtra("userId", userId);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+                        }
+                    }).start();
                 }
             }
         });
@@ -59,15 +85,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Validate Username and Password
-    public Boolean validate(String username, String password) {
-        //TODO: Get login information from the database instead of setting defaults.
-        //NOTE: Might need to change how this is validated based on how database is set-up.
-        String actualUser = "test";
-        String actualPass = "test";
-        if(username.equals(actualUser) && password.equals(actualPass)) {
-            return true;
-        } else {
+    public Boolean validate(UsersEntity usersEntity) {
+        if(usersEntity == null) {
             return false;
+        } else {
+            return true;
         }
     }
 }
