@@ -33,7 +33,7 @@ public class CalculateActivity extends AppCompatActivity {
     private String name1, name2;
     private TextView editTextPersonName1;
     private TextView editTextPersonName2;
-    private Button button;
+    private Button button, backButton;
     private String url;
 
     private static final String TAG = "CalculateActivity";
