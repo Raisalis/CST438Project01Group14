@@ -22,6 +22,9 @@ public class AdminMinMaxActivity extends AppCompatActivity {
     private Button mChangeMinMax;
     private Button mBack;
 
+    int min = 0;
+    int max = 100;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +42,8 @@ public class AdminMinMaxActivity extends AppCompatActivity {
 
         //Pre-fill min/max editTexts with current values.
 
-        int min = 10;
-        int max = 20;
+        mMin.setText(String.valueOf(min));
+        mMax.setText(String.valueOf(max));
         
         //Change values based on input.
         mChangeMinMax.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +56,12 @@ public class AdminMinMaxActivity extends AppCompatActivity {
                 if(cMin1 > cMax1) {
                     Toast myToast = Toast.makeText(AdminMinMaxActivity.this, "Enter valid number", Toast.LENGTH_LONG);
                     myToast.show();
-
+                } else if(cMin1 == min && cMax1 == max) {
+                    Toast myToast = Toast.makeText(AdminMinMaxActivity.this, "Values are the same. Please try again.", Toast.LENGTH_LONG);
+                    myToast.show();
                 } else {
+                    min = cMin1;
+                    max = cMax1;
                     Toast myToast = Toast.makeText(AdminMinMaxActivity.this, "Successfully changed.", Toast.LENGTH_LONG);
                     myToast.show();
                 }
