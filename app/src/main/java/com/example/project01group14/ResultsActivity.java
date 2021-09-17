@@ -9,14 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class ResultsActivity extends AppCompatActivity {
 
     // layout pieces
     private TextView mWelcome;
     private TextView mIntro;
-    private TextView mResults;
+    private TextView mResults,mPercentage;
     private Button mTryAgain;
     private Button mMainMenu;
+    private Bundle buns;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,14 +28,20 @@ public class ResultsActivity extends AppCompatActivity {
         // rig layout
         mWelcome = findViewById(R.id.textViewResultsWelcome);
         mIntro = findViewById(R.id.textViewCompatabilityIntro);
+        mPercentage = findViewById(R.id.textViewPercentage);
         mResults = findViewById(R.id.textViewResults);
         mTryAgain = findViewById(R.id.buttonTryAgain);
         mMainMenu = findViewById(R.id.buttonToMainFromResults);
 
         //TODO: Change mResults text to api results.
+        buns = getIntent().getExtras();
+        mPercentage.setText( buns.getString("percent") + "%");
+        mResults.setText(buns.getString("result") + "results");
+
 
         //Intent Factory for buttons
         IntentFactory factory = new IntentFactory();
+
 
         //Try Again button returns user to calculate activity.
         mTryAgain.setOnClickListener(new View.OnClickListener() {
