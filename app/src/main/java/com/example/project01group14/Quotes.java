@@ -6,6 +6,14 @@ public class Quotes {
     private String author;
     private String text;
 
+    public void setAuthor(String a) {
+        author = a;
+    }
+
+    public void setText(String t) {
+        text = t;
+    }
+
     public String getAuthor() {
         return author;
     }
