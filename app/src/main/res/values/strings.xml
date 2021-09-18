@@ -27,4 +27,10 @@
     <string name="main_menu">Main Menu</string>
     <string name="create_account">Create Account</string>
     <string name="Quote">Quote</string>
+    <string name="love_calculator">Love Calculator</string>
+    <string name="enter_two_names_below_to_calculate_their_love_compatibility">Enter two names below to calculate their love compatibility!</string>
+    <string name="name_1">Name 1</string>
+    <string name="name_2">Name 2</string>
+    <string name="calculate">Calculate</string>
+    <string name="randomize">Randomize!</string>
 </resources>
