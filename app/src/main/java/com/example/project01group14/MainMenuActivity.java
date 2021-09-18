@@ -114,8 +114,14 @@ public class MainMenuActivity extends AppCompatActivity {
         buttonToAdminPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = factory.getIntent(MainMenuActivity.this, AdminMenuActivity.class);
-                startActivity(intent);
+                if(name != "admin"){
+                    Toast myToast = Toast.makeText(getApplicationContext(), "Cannot Access this!", Toast.LENGTH_LONG);
+                    myToast.show();
+                }else{
+                    Intent intent = factory.getIntent(MainMenuActivity.this, AdminMenuActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
 
