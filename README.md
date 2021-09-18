@@ -13,7 +13,7 @@
 - Inspirational Quotes Generator: https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373
 
 ### Project Status
-- Currently in process in making more features and developing new ideas to create a user frienly and fun application. 
+- Currently in process in making more features and developing new ideas to create a user friendly and fun application. 
 
 ### Development Enviornment for Integration
 - Android Studio
