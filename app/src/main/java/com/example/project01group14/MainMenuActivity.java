@@ -114,7 +114,7 @@ public class MainMenuActivity extends AppCompatActivity {
         buttonToAdminPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(name != "admin"){
+                if(!name.equals("admin")){
                     Toast myToast = Toast.makeText(getApplicationContext(), "Cannot Access this!", Toast.LENGTH_LONG);
                     myToast.show();
                 }else{
