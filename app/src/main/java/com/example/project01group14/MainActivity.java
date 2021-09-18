@@ -58,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 });
                             }else{
+                                //Toast.makeText(getApplicationContext(), "You are Logged In", Toast.LENGTH_LONG).show();
                                 String name = usersEntity.getUser_name();
+                                Log.d(TAG, "USERNAME HERE FAILED: " + name);
                                 int userId = usersEntity.getId();
                                 Intent intent = new Intent(MainActivity.this, MainMenuActivity.class);
                                 intent.putExtra("name", name);

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,13 +23,23 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
+        Intent intent = getIntent();
 
+        int id = intent.getIntExtra("userId", 0);
+        String name = intent.getStringExtra("name");
+
+        Toast myToast = Toast.makeText(getApplicationContext(), "Welcome Home " + name, Toast.LENGTH_LONG);
+        myToast.show();
 
         // Attach layout
         textViewMainMenuWelcome = findViewById(R.id.textViewMainMenuWelcome);
         buttonToCalculatePage = findViewById(R.id.buttonToCalculatePage);
         buttonToAdminPage = findViewById(R.id.buttonToAdminPage);
         buttonLogout = findViewById(R.id.buttonLogout);
+
+        //Welcome Message
+        String welcome = "Welcome Home " + name;
+        textViewMainMenuWelcome.append(welcome);
 
         // Intent Factory for Buttons
         IntentFactory factory = new IntentFactory();

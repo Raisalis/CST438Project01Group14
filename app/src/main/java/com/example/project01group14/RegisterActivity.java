@@ -48,12 +48,14 @@ public class RegisterActivity extends AppCompatActivity {
                 usersEntity.setUser_last_name(mLastname.getText().toString());
                 usersEntity.setUser_name(mUsername.getText().toString());
                 usersEntity.setUser_password(mPassword.getText().toString());
+
+
                 if (validateInput(usersEntity)) {
-                    UsersDatabase usersDatabase = UsersDatabase.getInstance(getApplicationContext());
-                    final UsersDao userDao = usersDatabase.usersDao();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
+                            UsersDatabase usersDatabase = UsersDatabase.getInstance(getApplicationContext());
+                            UsersDao userDao = usersDatabase.usersDao();
                             userDao.insert(usersEntity);
                             runOnUiThread(new Runnable() {
                                 @Override
@@ -64,7 +66,8 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }).start();
                 }else{
-                    Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_SHORT).show();
+                    Toast myToast = Toast.makeText(getApplicationContext(), "If Empty fill all fields else choose different username", Toast.LENGTH_SHORT);
+                    myToast.show();
                 }
 
             }
