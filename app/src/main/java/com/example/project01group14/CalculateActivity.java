@@ -33,8 +33,9 @@ public class CalculateActivity extends AppCompatActivity {
     private String name1, name2;
     private TextView editTextPersonName1;
     private TextView editTextPersonName2;
-    private Button button;
+    private Button button, backButton;
     private String url;
+    private Button mBack;
 
     private static final String TAG = "CalculateActivity";
 
@@ -48,6 +49,10 @@ public class CalculateActivity extends AppCompatActivity {
         button = findViewById(R.id.buttonCalculate);
         editTextPersonName1 = findViewById(R.id.editTextPersonName1);
         editTextPersonName2 = findViewById(R.id.editTextPersonName2);
+        mBack = findViewById(R.id.buttonToMainFromCalculate);
+
+        //Intent Factory for buttons
+        IntentFactory factory = new IntentFactory();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +93,7 @@ public class CalculateActivity extends AppCompatActivity {
                             String result = (String) obj.get("result");
                             Log.d(TAG, "percent: " + percent);
 
-                            Intent newInt = new Intent(CalculateActivity.this, ResultsActivity.class);
+                            Intent newInt = factory.getIntent(CalculateActivity.this, ResultsActivity.class);
                             newInt.putExtra("percent", percent);
                             newInt.putExtra("result", result);
 //                        newInt.putExtras(welcomeBun);
@@ -107,6 +112,14 @@ public class CalculateActivity extends AppCompatActivity {
                         Log.d(TAG, "Fail here: ");
                     }
                 });
+            }
+        });
+
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = factory.getIntent(CalculateActivity.this, MainMenuActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -13,12 +13,14 @@ public class UsersEntity {
     private String user_last_name;
     private String user_password;
 
-//    public UsersEntity(String user_name, String user_first_name, String user_last_name, String user_password) {
-//        this.user_name = user_name;
-//        this.user_first_name = user_first_name;
-//        this.user_last_name = user_last_name;
-//        this.user_password = user_password;
-//    }
+    public UsersEntity() { }
+
+    public UsersEntity(String user_name, String user_first_name, String user_last_name, String user_password) {
+        this.user_name = user_name;
+        this.user_first_name = user_first_name;
+        this.user_last_name = user_last_name;
+        this.user_password = user_password;
+    }
 
     public void setId(int id) {
         this.id = id;

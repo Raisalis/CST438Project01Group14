@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         mCreateUser = findViewById(R.id.buttonRegisterUser);
         mBack = findViewById(R.id.buttonToLoginFromRegister);
 
-        //TODO: Create a new user given that the user does not exist.
+        //Create a new user given that the user does not exist.
         mCreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

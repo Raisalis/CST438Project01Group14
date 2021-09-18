@@ -33,10 +33,10 @@ public class ResultsActivity extends AppCompatActivity {
         mTryAgain = findViewById(R.id.buttonTryAgain);
         mMainMenu = findViewById(R.id.buttonToMainFromResults);
 
-        //TODO: Change mResults text to api results.
+        //Change mResults text to api results.
         buns = getIntent().getExtras();
         mPercentage.setText( buns.getString("percent") + "%");
-        mResults.setText(buns.getString("result") + "results");
+        mResults.setText(buns.getString("result"));
 
 
         //Intent Factory for buttons
